@@ -1,0 +1,27 @@
+def solution(s):
+    answer = len(s) # 최소값을 문자열 길이로 초기화
+    
+    # 입력 문자열 길이의 반만큼 반복
+    for i in range(1, len(s)//2+2):
+        unit = s[0: i]  # 비교 유닛 초기화
+        newS = s[i:]    # 검사할 문자열 초기화
+        result = [1, unit]  # 결과 배열 초기화
+        
+        # 문자열이 사라질 때까지 반복
+        while newS:
+            temp = newS[0*i: i] # 이번에 검사할 문자열
+            
+            if unit == temp:
+                result[-2] += 1 # 같으면 count 증가
+            else:
+                # 다르면 유닛 업데이트 및 result에 요소 삽입
+                unit = temp
+                result.extend([1, unit])
+            
+            newS = newS[i:] # 검사 문자열 업데이트
+        
+        while 1 in result: result.remove(1) # result에서 1 제거
+        result = ''.join(str(r) for r in result)   # result를 문자열로 변환
+        answer = min(answer, len(result))   # answer과 result의 길이 중 작은 값을 answer에 재할당
+    
+    return answer
