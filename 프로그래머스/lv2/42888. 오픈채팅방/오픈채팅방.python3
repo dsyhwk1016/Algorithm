@@ -1,7 +1,9 @@
+SetLog = {'Enter': '님이 들어왔습니다.', 'Leave': '님이 나갔습니다.'}
+
 def solution(record):
     answer = []
     user={}
-    temp=[]
+    log=[]
     
     for r in record:
         data = r.split()
@@ -11,15 +13,12 @@ def solution(record):
         if state != 'Leave':
             user[uid] = data[2]
         
-        temp.append((uid, state))
+        if state != 'Change':
+            log.append((uid, SetLog[state]))
     
-    for t in temp:
-        name = user[t[0]]
-        state = t[1]
-        
-        if state == 'Enter':
-            answer.append(f'{name}님이 들어왔습니다.')
-        if state == 'Leave':
-            answer.append(f'{name}님이 나갔습니다.')
+    for l in log:
+        name = user[l[0]]
+        state = l[1]
+        answer.append(f'{name}{state}')
     
     return answer

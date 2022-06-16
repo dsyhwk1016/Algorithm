@@ -1,10 +1,10 @@
 # [level 2] 오픈채팅방 - 42888 
 
-[문제 링크](https://programmers.co.kr/learn/courses/30/lessons/42888) 
+[문제 링크](https://programmers.co.kr/learn/courses/30/lessons/42888?language=python3) 
 
 ### 성능 요약
 
-메모리: 46.3 MB, 시간: 68.45 ms
+메모리: 41.4 MB, 시간: 67.61 ms
 
 ### 구분
 
