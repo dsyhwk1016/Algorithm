@@ -1,0 +1,25 @@
+def solution(record):
+    answer = []
+    user={}
+    temp=[]
+    
+    for r in record:
+        data = r.split()
+        state = data[0]
+        uid = data[1]
+        
+        if state != 'Leave':
+            user[uid] = data[2]
+        
+        temp.append((uid, state))
+    
+    for t in temp:
+        name = user[t[0]]
+        state = t[1]
+        
+        if state == 'Enter':
+            answer.append(f'{name}님이 들어왔습니다.')
+        if state == 'Leave':
+            answer.append(f'{name}님이 나갔습니다.')
+    
+    return answer
