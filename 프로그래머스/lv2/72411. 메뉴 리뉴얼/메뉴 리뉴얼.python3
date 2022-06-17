@@ -1,0 +1,18 @@
+from itertools import combinations
+
+def solution(orders, course):
+    answer = []
+    
+    for n in course:
+        com = {}
+        
+        for o in orders:
+            for c in list(combinations(o, n)):
+                c = ''.join(sorted(c))
+                com[c] = com[c]+1 if c in com else 1
+        
+        if com:
+            maxCount = max(com.values())
+            answer += [key for key in com if com[key]==maxCount and com[key]>=2]
+    
+    return sorted(answer)
