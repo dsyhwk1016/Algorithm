@@ -1,0 +1,9 @@
+def solution(participant, completion):
+    participant.sort()
+    completion.sort()
+    
+    for p in list(zip(participant,completion)):
+        if p[0] != p[1]:
+            return p[0]
+    
+    return participant[-1]
