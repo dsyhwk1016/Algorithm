@@ -1,0 +1,18 @@
+students = [[1, 2, 3, 4, 5], [2, 1, 2, 3, 2, 4, 2, 5], [3, 3, 1, 1, 2, 2, 4, 4, 5, 5]]
+
+def solution(answers):
+    answer = []
+    maxScore = 0
+    
+    for student in students:
+        score = 0
+        
+        for i in range(len(answers)):
+            if answers[i] == student[i % len(student)]: score += 1
+        
+        if score > maxScore:
+            answer = [students.index(student)+1]
+            maxScore = score
+        elif score == maxScore: answer.append(students.index(student)+1)
+    
+    return answer
