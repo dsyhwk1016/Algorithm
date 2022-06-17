@@ -1,0 +1,35 @@
+# 올바른 괄호 문자열인지 판단하는 함수
+def isRight(p):
+    if not p: return True
+
+    for i in range(len(p)-1):
+        if p[i]=='(' and p[i+1]==')':
+            return isRight(p[:i]+p[i+2:])
+    
+    return False
+
+def solution(p):
+    if not p: return ''
+
+    u = ''
+    v = ''
+    check = p[0]
+    count = 0
+    
+    while p:
+        b = p[0]
+        p = p[1:]
+        u += b
+        count = count+1 if b==check else count-1
+        if count == 0:
+            v = p
+            break
+    
+    if isRight(u): return u+solution(v)
+    else:
+        u = u[1:-1]
+        temp=''
+        for c in u:
+            if c=='(': temp += ')' 
+            else: temp += '('
+        return '('+solution(v)+')'+temp
