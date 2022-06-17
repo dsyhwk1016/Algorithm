@@ -1,0 +1,20 @@
+from itertools import permutations
+
+def solution(numbers):
+    result = []
+    numList = list(numbers)
+    
+    for i in range(1, len(numbers)+1):
+        for l in permutations(numList, i):
+            isPrime = True
+            num = int(''.join(l))
+            
+            for i in range(2, num):
+                if num % i == 0:
+                    isPrime = False
+                    break
+            
+            if isPrime==True and num > 1 and num not in result:
+                result.append(num)
+    
+    return len(result)
