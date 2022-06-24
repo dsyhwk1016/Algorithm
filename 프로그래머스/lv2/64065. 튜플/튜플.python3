@@ -1,0 +1,13 @@
+def solution(s):
+    # 문자열을 숫자의 중첩 리스트로 변환
+    s = list(s.split('},{'))
+    s = [ list(map(int, a.replace('{', '').replace('}', '').split(','))) for a in s ]
+    
+    # 리스트 요소의 길이 오름차순으로 정렬
+    s.sort(key= lambda x: len(x))
+    
+    answer = []
+    for a in s:
+        answer+=[b for b in a if b not in answer]
+        
+    return answer
