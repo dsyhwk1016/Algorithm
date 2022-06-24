@@ -1,0 +1,40 @@
+def solution(places):
+    answer = []
+    
+    for p in places:
+        answer.append(place(p))
+    
+    return answer
+
+def place(p):
+    for i in range(5):
+        for j in range(5):
+            if p[i][j] == 'P':
+                p[i] = p[i][:j] + 'X' + p[i][j+1:]      # 탐색한 좌표를 'X'로 표시
+                if not DFS(p, i, j, 0):
+                    return 0
+    return 1
+
+def DFS(p, x, y, distance):
+    # 거리가 2 이상이면 True 반환
+    if distance >= 2:
+        return True
+    
+    dif = [(1, 0), (0, 1), (-1, 0), (0, -1)]    # 우, 하, 좌, 상 위치의 (x,y) 거리
+    result = True
+    
+    # 사방에 대해 반복
+    for i in range(4):
+        # 방문할 다음 좌표
+        nx = x + dif[i][0]
+        ny = y + dif[i][1]
+        
+        # 다음 좌표가 대기실에 포함되고 방문 가능(P, O)할 때
+        if 0<=nx<5 and 0<=ny<5 and p[nx][ny] != 'X':
+            # 다음 좌표에 응시자가 있다면 False 반환
+            if p[nx][ny] == 'P':
+                return False
+            
+            p[nx] = p[nx][:ny] + 'X' + p[nx][ny+1:]   # 방문한 좌표를 'X'로 표시
+            result = result and DFS(p, nx, ny, distance+1)
+    return result
