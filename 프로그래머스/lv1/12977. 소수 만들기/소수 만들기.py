@@ -13,8 +13,7 @@ def isPrime(number):
 def solution(nums):
     answer = 0
     
-    combList = list(combinations(nums, 3))
-    for c in combList:
+    for c in combinations(nums, 3):
         if isPrime(sum(c)):
             answer += 1
     
