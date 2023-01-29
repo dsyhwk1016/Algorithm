@@ -1,8 +1,11 @@
 def solution(n, lost, reserve):
-    realLost = [l for l in lost if l not in reserve]
-    realReserve = [r for r in reserve if r not in lost]
+    realLost = [l for l in lost]
+    for l in lost:
+        if l in reserve:
+            realLost.remove(l)
+            reserve.remove(l)
     
-    for r in sorted(realReserve):
+    for r in sorted(reserve):
         if r-1 in realLost:
             realLost.remove(r-1)
         elif r+1 in realLost:
