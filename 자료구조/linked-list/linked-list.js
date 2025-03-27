@@ -32,6 +32,18 @@ class LinkedList {
         }
         this.count++;
     }
+
+    printAll() {
+        let text = "";
+
+        let currentNode = this.header;
+        for (let i = 0; i < this.count; i++) {
+            text += i ? `, ${currentNode.data}` : currentNode.data;
+            currentNode = currentNode.next;
+        }
+
+        console.log(text);
+    }
 }
 
 const linkedList = new LinkedList();
@@ -40,3 +52,7 @@ linkedList.insert(0, 9);
 linkedList.insert(1, 7);
 linkedList.insert(2, 6);
 linkedList.insert(3, 5);
+linkedList.printAll();
+
+linkedList.insert(1, 8);
+linkedList.printAll();
