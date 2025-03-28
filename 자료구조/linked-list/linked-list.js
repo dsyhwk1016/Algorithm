@@ -51,6 +51,28 @@ class LinkedList {
         console.log(text);
     }
 
+    delete(index) {
+        if (index < 0 || index >= this.count) {
+            throw new Error("Invalid index");
+        }
+
+        if (index === 0) {
+            this.header = this.header.next;
+        } else {
+            let currentNode = this.header;
+            for (let i = 1; i < index; i++) {
+                currentNode = currentNode.next;
+            }
+
+            currentNode.next = currentNode.next.next;
+        }
+        this.count--;
+    }
+
+    deleteLast() {
+        this.delete(this.count - 1);
+    }
+
     clear() {
         this.header = null;
         this.count = 0;
@@ -59,17 +81,21 @@ class LinkedList {
 
 const linkedList = new LinkedList();
 
-linkedList.insert(0, 9);
-linkedList.insert(1, 7);
-linkedList.insert(2, 6);
-linkedList.insert(3, 5);
+linkedList.insertLast(9);
+linkedList.insertLast(8);
+linkedList.insertLast(7);
+linkedList.insertLast(6);
+linkedList.insertLast(5);
 linkedList.printAll();
 
-linkedList.insert(1, 8);
+linkedList.insert(2, 3);
 linkedList.printAll();
 
-linkedList.clear();
+// linkedList.clear();
+// linkedList.printAll();
+
+linkedList.delete(2);
 linkedList.printAll();
 
-linkedList.insertLast(3);
+linkedList.deleteLast();
 linkedList.printAll();
