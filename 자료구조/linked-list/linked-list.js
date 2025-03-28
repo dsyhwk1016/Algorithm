@@ -44,6 +44,11 @@ class LinkedList {
 
         console.log(text);
     }
+
+    clear() {
+        this.header = null;
+        this.count = 0;
+    }
 }
 
 const linkedList = new LinkedList();
@@ -56,3 +61,6 @@ linkedList.printAll();
 
 linkedList.insert(1, 8);
 linkedList.printAll();
+
+linkedList.clear();
+linkedList.printAll()
