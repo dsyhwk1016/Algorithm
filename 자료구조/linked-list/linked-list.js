@@ -33,12 +33,18 @@ class LinkedList {
         this.count++;
     }
 
+    insertLast(data) {
+        this.insert(this.count, data);
+    }
+
     printAll() {
         let text = "";
 
         let currentNode = this.header;
-        for (let i = 0; i < this.count; i++) {
-            text += i ? `, ${currentNode.data}` : currentNode.data;
+        while (currentNode) {
+            text += currentNode.next
+                ? `${currentNode.data}, `
+                : currentNode.data;
             currentNode = currentNode.next;
         }
 
@@ -63,4 +69,7 @@ linkedList.insert(1, 8);
 linkedList.printAll();
 
 linkedList.clear();
-linkedList.printAll()
+linkedList.printAll();
+
+linkedList.insertLast(3);
+linkedList.printAll();
