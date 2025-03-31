@@ -37,6 +37,19 @@ class LinkedList {
         this.insert(this.count, data);
     }
 
+    getNode(index) {
+        if (index < 0 || index >= this.count) {
+            throw new Error("Invalid index");
+        }
+
+        let currentNode = this.header;
+        for (let i = 0; i < index; i++) {
+            currentNode = currentNode.next;
+        }
+
+        return currentNode;
+    }
+
     printAll() {
         let text = "";
 
@@ -99,3 +112,6 @@ linkedList.printAll();
 
 linkedList.deleteLast();
 linkedList.printAll();
+
+console.log(linkedList.getNode(2));
+console.log(linkedList.getNode(0));
