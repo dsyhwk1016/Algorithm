@@ -5,7 +5,7 @@ class Node {
     }
 }
 
-class LinkedList {
+export class LinkedList {
     constructor() {
         this.header = null;
         this.count = 0;
@@ -69,17 +69,21 @@ class LinkedList {
             throw new Error("Invalid index");
         }
 
+        let deleteNode;
         if (index === 0) {
+            deleteNode = this.header;
             this.header = this.header.next;
         } else {
             let currentNode = this.header;
             for (let i = 1; i < index; i++) {
                 currentNode = currentNode.next;
             }
-
+            deleteNode = currentNode.next;
             currentNode.next = currentNode.next.next;
         }
         this.count--;
+
+        return deleteNode;
     }
 
     deleteLast() {
@@ -91,27 +95,3 @@ class LinkedList {
         this.count = 0;
     }
 }
-
-const linkedList = new LinkedList();
-
-linkedList.insertLast(9);
-linkedList.insertLast(8);
-linkedList.insertLast(7);
-linkedList.insertLast(6);
-linkedList.insertLast(5);
-linkedList.printAll();
-
-linkedList.insert(2, 3);
-linkedList.printAll();
-
-// linkedList.clear();
-// linkedList.printAll();
-
-linkedList.delete(2);
-linkedList.printAll();
-
-linkedList.deleteLast();
-linkedList.printAll();
-
-console.log(linkedList.getNode(2));
-console.log(linkedList.getNode(0));
