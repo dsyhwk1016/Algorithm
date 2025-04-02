@@ -31,10 +31,15 @@ const testLinkedList = () => {
 const testStack = () => {
     const stack = new Stack();
 
+    console.log(stack.isEmpty());
     console.log(stack.pop());
+
     stack.push(3);
     stack.push(1);
     stack.push(2);
     console.log(stack.pop());
+    console.log(stack.isEmpty());
+
+    console.log(stack.peek());
 };
 testStack();

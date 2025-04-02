@@ -17,7 +17,11 @@ export class Stack {
         }
     }
 
-    peek() {}
+    peek() {
+        return this.list.getNode(0);
+    }
 
-    isEmpty() {}
+    isEmpty() {
+        return !this.list.count;
+    }
 }
