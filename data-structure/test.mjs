@@ -1,3 +1,4 @@
+import { DoubleLinkedList } from "./double-linked-list.mjs";
 import { LinkedList } from "./linked-list.mjs";
 import { Stack } from "./stack.mjs";
 
@@ -42,4 +43,27 @@ const testStack = () => {
 
     console.log(stack.peek());
 };
-testStack();
+// testStack();
+
+const testDoubleLinkedList = () => {
+    const doubleLinkedList = new DoubleLinkedList();
+
+    doubleLinkedList.insertLast(1);
+    doubleLinkedList.insert(0, 0);
+    doubleLinkedList.insertLast(2);
+    doubleLinkedList.insert(1, 8);
+    doubleLinkedList.printAll();
+
+    // doubleLinkedList.clear();
+    // doubleLinkedList.printAll();
+
+    // doubleLinkedList.delete(2);
+    // doubleLinkedList.printAll();
+
+    // doubleLinkedList.deleteLast();
+    // doubleLinkedList.printAll();
+
+    console.log(doubleLinkedList.getNode(2));
+    console.log(doubleLinkedList.getNode(0));
+};
+testDoubleLinkedList();
