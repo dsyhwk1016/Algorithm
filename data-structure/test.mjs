@@ -52,16 +52,17 @@ const testDoubleLinkedList = () => {
     doubleLinkedList.insert(0, 0);
     doubleLinkedList.insertLast(2);
     doubleLinkedList.insert(1, 8);
+    doubleLinkedList.insertLast(5);
     doubleLinkedList.printAll();
 
     // doubleLinkedList.clear();
     // doubleLinkedList.printAll();
 
-    // doubleLinkedList.delete(2);
-    // doubleLinkedList.printAll();
+    doubleLinkedList.delete(2);
+    doubleLinkedList.printAll();
 
-    // doubleLinkedList.deleteLast();
-    // doubleLinkedList.printAll();
+    doubleLinkedList.deleteLast();
+    doubleLinkedList.printAll();
 
     console.log(doubleLinkedList.getNode(2));
     console.log(doubleLinkedList.getNode(0));
