@@ -1,5 +1,6 @@
 import { DoubleLinkedList } from "./double-linked-list.mjs";
 import { LinkedList } from "./linked-list.mjs";
+import { Queue } from "./queue.mjs";
 import { Stack } from "./stack.mjs";
 
 const testLinkedList = () => {
@@ -67,4 +68,20 @@ const testDoubleLinkedList = () => {
     console.log(doubleLinkedList.getNode(2));
     console.log(doubleLinkedList.getNode(0));
 };
-testDoubleLinkedList();
+// testDoubleLinkedList();
+
+const testQueue = () => {
+    const queue = new Queue();
+
+    console.log(queue.isEmpty());
+    console.log(queue.dequeue());
+
+    queue.enqueue(3);
+    queue.enqueue(1);
+    queue.enqueue(2);
+    console.log(queue.dequeue());
+    console.log(queue.isEmpty());
+
+    console.log(queue.front());
+};
+testQueue();

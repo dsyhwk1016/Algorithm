@@ -87,7 +87,7 @@ export class LinkedList {
     }
 
     deleteLast() {
-        this.delete(this.count - 1);
+        return this.delete(this.count - 1);
     }
 
     clear() {
