@@ -1,5 +1,6 @@
 import { Deque } from "./deque.mjs";
 import { DoubleLinkedList } from "./double-linked-list.mjs";
+import { HashTable } from "./hash-table.mjs";
 import { LinkedList } from "./linked-list.mjs";
 import { Queue } from "./queue.mjs";
 import { Stack } from "./stack.mjs";
@@ -107,4 +108,22 @@ const testDeque = () => {
 
     console.log(deque.isEmpty());
 };
-testDeque();
+// testDeque();
+
+const testHashTable = () => {
+    const hashTable = new HashTable();
+
+    hashTable.set(13, "apple");
+    hashTable.set(1, "banana");
+    hashTable.set(3, "candy");
+    hashTable.set(5, "doughnut");
+    hashTable.set(8, "egg");
+    hashTable.set(43, "fruit");
+
+    console.log(hashTable.get(5));
+    console.log(hashTable.get(3));
+
+    console.log(hashTable.remove(2));
+    console.log(hashTable.remove(13));
+};
+testHashTable();
