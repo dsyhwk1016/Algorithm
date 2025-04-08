@@ -1,3 +1,4 @@
+import { Deque } from "./deque.mjs";
 import { DoubleLinkedList } from "./double-linked-list.mjs";
 import { LinkedList } from "./linked-list.mjs";
 import { Queue } from "./queue.mjs";
@@ -84,4 +85,26 @@ const testQueue = () => {
 
     console.log(queue.front());
 };
-testQueue();
+// testQueue();
+
+const testDeque = () => {
+    const deque = new Deque();
+
+    console.log(deque.isEmpty());
+    console.log(deque.removeFirst());
+    console.log(deque.removeLast());
+    deque.printAll();
+
+    deque.addLast(3);
+    deque.addLast(5);
+    deque.addFirst(1);
+    deque.addFirst(2);
+    deque.printAll();
+
+    deque.removeFirst();
+    deque.removeLast();
+    deque.printAll();
+
+    console.log(deque.isEmpty());
+};
+testDeque();
