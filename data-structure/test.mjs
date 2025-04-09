@@ -3,6 +3,7 @@ import { DoubleLinkedList } from "./double-linked-list.mjs";
 import { HashTable } from "./hash-table.mjs";
 import { LinkedList } from "./linked-list.mjs";
 import { Queue } from "./queue.mjs";
+import { HashSet } from "./hash-set.mjs";
 import { Stack } from "./stack.mjs";
 
 const testLinkedList = () => {
@@ -126,4 +127,27 @@ const testHashTable = () => {
     console.log(hashTable.remove(2));
     console.log(hashTable.remove(13));
 };
-testHashTable();
+// testHashTable();
+
+const testSet = () => {
+    const set = new HashSet();
+
+    console.log(set.isEmpty());
+    console.log(set.isContain(1));
+
+    set.add(3);
+    set.add(2);
+    set.add(3);
+    set.add(5);
+    set.add(8);
+    set.add(6);
+    set.add(0);
+    console.log(set.isContain(3));
+    console.log(set.remove(3));
+    console.log(set.isEmpty());
+
+    set.printAll();
+    set.clear();
+    console.log(set.isEmpty());
+};
+testSet();
