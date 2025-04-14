@@ -34,6 +34,25 @@ const selectionSort = (list) => {
         list[minIndex] = temp;
     }
 };
-selectionSort(list);
+// selectionSort(list);
+
+// 삽입 정렬 O(n^2)
+const insertSort = (list) => {
+    // 0번 인덱스는 정렬되어있다고 가정
+    for (let i = 1; i < list.length; i++) {
+        const targetValue = list[i];
+
+        // 정렬된 영역의 뒤에서부터 비교
+        for (let j = i; j >= 0; j--) {
+            if (list[j - 1] > targetValue) {
+                list[j] = list[j - 1];
+            } else {
+                list[j] = targetValue;
+                break;
+            }
+        }
+    }
+};
+insertSort(list);
 
 console.log(list);
