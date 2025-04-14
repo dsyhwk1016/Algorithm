@@ -94,6 +94,52 @@ const mergeSort = (list, leftIndex, rightIndex) => {
     mergeSort(list, midIndex + 1, rightIndex);
     merge(list, leftIndex, midIndex, rightIndex);
 };
-mergeSort(list, 0, list.length - 1);
+// mergeSort(list, 0, list.length - 1);
+
+const swap = (list, index1, index2) => {
+    const temp = list[index1];
+    list[index1] = list[index2];
+    list[index2] = temp;
+};
+
+const divide = (list, leftIndex, rightIndex) => {
+    let pivot = list[leftIndex];
+    let leftTargetIndex = leftIndex + 1;
+    let rightTargetIndex = rightIndex;
+
+    while (leftTargetIndex <= rightTargetIndex) {
+        while (
+            list[leftTargetIndex] <= pivot &&
+            leftTargetIndex <= rightTargetIndex
+        ) {
+            leftTargetIndex++;
+        }
+        while (
+            list[rightTargetIndex] >= pivot &&
+            leftTargetIndex <= rightTargetIndex
+        ) {
+            rightTargetIndex--;
+        }
+
+        if (leftTargetIndex < rightTargetIndex) {
+            swap(list, leftTargetIndex, rightTargetIndex);
+        }
+    }
+
+    swap(list, leftIndex, rightTargetIndex);
+
+    return rightTargetIndex;
+};
+
+const quickSort = (list, leftIndex, rightIndex) => {
+    if (leftIndex >= rightIndex) {
+        return;
+    }
+
+    let pivotIndex = divide(list, leftIndex, rightIndex);
+    quickSort(list, leftIndex, pivotIndex - 1);
+    quickSort(list, pivotIndex + 1, rightIndex);
+};
+quickSort(list, 0, list.length - 1);
 
 console.log(list);
