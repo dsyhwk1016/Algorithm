@@ -53,6 +53,47 @@ const insertSort = (list) => {
         }
     }
 };
-insertSort(list);
+// insertSort(list);
+
+// 병합 정렬 O(nlogn)
+const merge = (list, leftIndex, midIndex, rightIndex) => {
+    let leftTargetIndex = leftIndex;
+    let rightTargetIndex = midIndex + 1;
+    const temp = [];
+
+    while (leftTargetIndex <= midIndex && rightTargetIndex <= rightIndex) {
+        if (list[leftTargetIndex] < list[rightTargetIndex]) {
+            temp.push(list[leftTargetIndex++]);
+        } else {
+            temp.push(list[rightTargetIndex++]);
+        }
+    }
+
+    if (leftTargetIndex <= midIndex) {
+        for (let i = leftTargetIndex; i <= midIndex; i++) {
+            temp.push(list[i]);
+        }
+    } else {
+        for (let i = rightTargetIndex; i <= rightIndex; i++) {
+            temp.push(list[i]);
+        }
+    }
+
+    for (let i = 0; i < temp.length; i++) {
+        list[leftIndex + i] = temp[i];
+    }
+};
+
+const mergeSort = (list, leftIndex, rightIndex) => {
+    if (leftIndex >= rightIndex) {
+        return;
+    }
+
+    const midIndex = Math.floor((leftIndex + rightIndex) / 2);
+    mergeSort(list, leftIndex, midIndex);
+    mergeSort(list, midIndex + 1, rightIndex);
+    merge(list, leftIndex, midIndex, rightIndex);
+};
+mergeSort(list, 0, list.length - 1);
 
 console.log(list);
