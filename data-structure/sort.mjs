@@ -1,4 +1,5 @@
 const list = [3, 5, 2, 4, 6, 1, 8, 7];
+console.log(list);
 
 // 버블 정렬 O(n^2)
 const bubbleSort = (list) => {
@@ -14,6 +15,25 @@ const bubbleSort = (list) => {
         }
     }
 };
+// bubbleSort(list);
 
-bubbleSort(list);
+// 선택 정렬 O(n^2)
+const selectionSort = (list) => {
+    for (let i = 0; i < list.length; i++) {
+        let minIndex = i; // 정렬되지 않은 첫번째 인덱스
+
+        // 정렬되지 않은 요소들 중 가장 작은 값을 찾음
+        for (let j = i; j < list.length; j++) {
+            if (list[j] < list[minIndex]) {
+                minIndex = j;
+            }
+        }
+
+        let temp = list[i];
+        list[i] = list[minIndex];
+        list[minIndex] = temp;
+    }
+};
+selectionSort(list);
+
 console.log(list);
