@@ -1,41 +1,7 @@
 const readline = require("readline");
 
-const temp = {};
-const rgb = (list, targetIndex, excludeColor) => {
-    const key = `${targetIndex} ${excludeColor}`;
-    if (temp[key]) {
-        return temp[key];
-    }
-
-    const targetPrice = list[targetIndex];
-    let selectR = targetPrice.r;
-    let selectG = targetPrice.g;
-    let selectB = targetPrice.b;
-
-    if (targetIndex >= 1) {
-        selectR = targetPrice.r + rgb(list, targetIndex - 1, "r");
-        selectG = targetPrice.g + rgb(list, targetIndex - 1, "g");
-        selectB = targetPrice.b + rgb(list, targetIndex - 1, "b");
-    }
-
-    switch (excludeColor) {
-        case "r":
-            temp[key] = Math.min(selectG, selectB);
-            break;
-        case "g":
-            temp[key] = Math.min(selectR, selectB);
-            break;
-        case "b":
-            temp[key] = Math.min(selectR, selectG);
-            break;
-        default:
-            temp[key] = Math.min(selectR, selectG, selectB);
-            break;
-    }
-    return temp[key];
-};
-
 let n;
+let dp;
 const inputList = [];
 const rl = readline.createInterface({
     input: process.stdin,
@@ -44,6 +10,7 @@ const rl = readline.createInterface({
 rl.on("line", (line) => {
     if (!n) {
         n = Number(line);
+        dp = Array.from({ length: n }, () => ({ r: 0, g: 0, b: 0 }));
     } else {
         const [r, g, b] = line.split(" ").map(Number);
         inputList.push({ r, g, b });
@@ -52,7 +19,15 @@ rl.on("line", (line) => {
         }
     }
 }).on("close", () => {
-    const price = rgb(inputList, n - 1);
-    console.log(price);
+    dp[0] = inputList[0];
+
+    for (let i = 1; i < n; i++) {
+        dp[i].r = inputList[i].r + Math.min(dp[i - 1].g, dp[i - 1].b);
+        dp[i].g = inputList[i].g + Math.min(dp[i - 1].r, dp[i - 1].b);
+        dp[i].b = inputList[i].b + Math.min(dp[i - 1].r, dp[i - 1].g);
+    }
+
+    console.log(Math.min(dp[n - 1].r, dp[n - 1].g, dp[n - 1].b));
+
     process.exit();
 });
