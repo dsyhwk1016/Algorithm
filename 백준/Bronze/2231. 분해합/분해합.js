@@ -10,11 +10,12 @@ rl.on("line", (line) => {
     rl.close();
 }).on("close", () => {
     let i;
-    for (i = 1; i <= n; i++) {
+    for (i = Math.max(1, n - 9 * String(n).length); i <= n; i++) {
         const sum =
             String(i)
                 .split("")
                 .reduce((sum, num) => sum + Number(num), 0) + i;
+
         if (sum === n) {
             break;
         }
