@@ -19,5 +19,12 @@ const testBinaryTree = () => {
     console.log(tree1.getLeftSubTree().getData());
     console.log(tree1.getRightSubTree().getLeftSubTree().getData());
     console.log(tree2.getRightSubTree());
+
+    console.log("전위 순회");
+    tree1.preOrderTraversal(tree1);
+    console.log("중위 순회");
+    tree1.inOrderTraversal(tree1);
+    console.log("후위 순회");
+    tree1.postOrderTraversal(tree1);
 };
 testBinaryTree();
