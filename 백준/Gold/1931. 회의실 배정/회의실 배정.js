@@ -18,7 +18,7 @@ rl.on("line", (line) => {
         }
     }
 }).on("close", () => {
-    meetingList.sort((a, b) => a[0] - b[0]).sort((a, b) => a[1] - b[1]);
+    meetingList.sort((a, b) => a[1] - b[1] || a[0] - b[0]);
 
     let total = 0;
     let currEnd = 0;
