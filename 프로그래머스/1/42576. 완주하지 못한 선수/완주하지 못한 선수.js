@@ -1,16 +1,18 @@
 const solution = (participant, completion) => {
-    const countOfName = new Map();
-    participant.forEach(name => countOfName.set(name, (countOfName.get(name) || 0) + 1));
+    const map = new Map();
 
-    completion.forEach(name => {
-        const count = countOfName.get(name);
-
-        if (count === 1) {
-            countOfName.delete(name);
-        } else {
-            countOfName.set(name, count - 1);
+    for (let i = 0; i < participant.length; i++) {
+        map.set(participant[i], (map.get(participant[i]) ?? 0) + 1);
+        if (completion[i] !== undefined) {
+            map.set(completion[i], (map.get(completion[i]) ?? 0) - 1);
         }
-    });
-
-    return countOfName.keys().next().value;
+    }
+    
+    for(const [name, value] of map){
+        if(value > 0){
+            return name
+        }
+    }
+    
+    return
 };
